@@ -17,8 +17,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: Download the Sysdig Inline Scanner
-      run: curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/darwin/amd64/sysdig-cli-scanner"  
+      run: curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/linux/amd64/sysdig-cli-scanner"  
     - name: CHMOD
       run: chmod +x ./sysdig-cli-scanner
     - name: Scanning image
-      run: SECURE_API_TOKEN=15fd11d2-c9c5-412e-9ffe-a351e1fbd479 ./sysdig-cli-scanner --apiurl https://secure.sysdig.com neerav-s/self-hosted-runner:latest
+      run: ./sysdig-cli-scanner --apiurl https://secure.sysdig.com SECURE_API_TOKEN=15fd11d2-c9c5-412e-9ffe-a351e1fbd479 neerav-s/self-hosted-runner:latest
