@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag neerav-s/test:2.0
     - name: Download the Sysdig Inline Scanner
       run: curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/linux/amd64/sysdig-cli-scanner"  
     - name: CHMOD
       run: chmod +x ./sysdig-cli-scanner
     - name: Scanning image
-      run: SECURE_API_TOKEN=15fd11d2-c9c5-412e-9ffe-a351e1fbd479 ./sysdig-cli-scanner --apiurl https://secure.sysdig.com neerav-s/self-hosted-runner:latest
+      run: SECURE_API_TOKEN=15fd11d2-c9c5-412e-9ffe-a351e1fbd479 ./sysdig-cli-scanner --apiurl https://secure.sysdig.com neerav-s/test:2.0
