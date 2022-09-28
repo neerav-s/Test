@@ -21,4 +21,4 @@ jobs:
     - name: CHMOD
       run: chmod +x ./sysdig-cli-scanner
     - name: Scanning image
-      run: ./sysdig-cli-scanner --apiurl https://secure.sysdig.com SECURE_API_TOKEN=15fd11d2-c9c5-412e-9ffe-a351e1fbd479 neerav-s/self-hosted-runner:latest
+      run: SECURE_API_TOKEN=15fd11d2-c9c5-412e-9ffe-a351e1fbd479 ./sysdig-cli-scanner --apiurl https://secure.sysdig.com neerav-s/self-hosted-runner:latest
